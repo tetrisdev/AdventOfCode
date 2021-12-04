@@ -25,12 +25,11 @@ class BingoBoard:
     def score(self) -> int:
         return sum([x[0] for x in self.board if x[1] == False])
 
-def solutionA(input):
-    nums = [int(x) for x in input[0].split(',')]
+def generateBoards(input) -> list:
     input = input[2:]
+    counterID = 0
     boards = []
     board = []
-    counterID = 0
     for l in input:
         if l == '\n':
             boards.append(BingoBoard(counterID,board,5))
@@ -38,32 +37,27 @@ def solutionA(input):
             counterID += 1
         else:
             board += [(int(x),False) for x in [l[i:i+2] for i in range(0,len(l),3)]]
+    return boards
+
+def runBingo(nums, boards) -> list:
+    winners = []
     for i in nums:
         for b in boards:
             b.mark(i)
             if b.win():
-                print(b.score() * i)
-                return
+                winners.append(b.score() * i)
+                boards = list(filter(lambda x : not x.won ,boards))
+    return winners
+
+def solutionA(input):
+    nums = [int(x) for x in input[0].split(',')]
+    boards = generateBoards(input)
+    print(runBingo(nums,boards)[0])
 
 def solutionB(input):
     nums = [int(x) for x in input[0].split(',')]
-    input = input[2:]
-    boards = []
-    board = []
-    counterID = 0
-    for l in input:
-        if l == '\n':
-            boards.append(BingoBoard(counterID,board,5))
-            board = []
-            counterID += 1
-        else:
-            board += [(int(x),False) for x in [l[i:i+2] for i in range(0,len(l),3)]]
-    for i in nums:
-        for b in boards:
-            b.mark(i)
-            if b.win():
-                print(b.score() * i)
-                boards = list(filter(lambda x : not x.won ,boards))
+    boards = generateBoards(input)
+    print(runBingo(nums,boards)[-1])
     
 def parseInput(filepath: str):
     with open(filepath) as file:
