@@ -9,7 +9,6 @@ def solutionA(input):
     
 def solutionB(input):
     crabs = [int(x) for x in input[0].split(',')]
-    crabs.sort()
     avg = floor(sum(crabs) / len(crabs)) #round works for test input, floor works for my input.
     cost = sum([int((abs(avg-x) ** 2 + abs(avg-x)) / 2) for x in crabs])
     print("B:",cost)
