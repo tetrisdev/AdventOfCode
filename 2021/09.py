@@ -26,27 +26,14 @@ def findLowPoints(arr) -> list:
 def calcBasin(arr,x) -> int:
     around = []
     num,i,j = x
+    coords = [(0,-1),(0,1),(-1,0),(1,0)]
     arr[i][j][1] = True
-    if j > 0:
-        comp = arr[i][j-1][0]
-        if num < comp and comp != 9 and not arr[i][j-1][1]:
-            around.append((comp,i,j-1))
-            arr[i][j-1][1] = True
-    if j < len(arr[i])-1:
-        comp = arr[i][j+1][0]
-        if num < comp and comp != 9 and not arr[i][j+1][1]:
-            around.append((comp,i,j+1))
-            arr[i][j+1][1] = True
-    if i > 0:
-        comp = arr[i-1][j][0]
-        if num < comp and comp != 9 and not arr[i-1][j][1]:
-            around.append((comp,i-1,j))
-            arr[i-1][j][1] = True
-    if i < len(arr)-1:
-        comp = arr[i+1][j][0]
-        if num < comp and comp != 9 and not arr[i+1][j][1]:
-            around.append((comp,i+1,j))
-            arr[i+1][j][1] = True
+    for z,y in coords:
+        if i+z in range(0,len(arr)) and j+y in range(0,len(arr[i])):
+            comp = arr[i+z][j+y][0]
+            if num < comp and comp != 9 and not arr[i+z][j+y][1]:
+                around.append((comp,i+z,j+y))
+                arr[i+z][j+y][1] = True
     sum = 0
     for i in around:
         sum += calcBasin(arr,i)
