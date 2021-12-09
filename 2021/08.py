@@ -9,6 +9,7 @@ class sevenSeg():
     sevenSegNums = {"abcefg": 0,"cf":1,"acdeg":2,"acdfg":3,"bcdf":4,"abdfg":5,"abdefg":6,"acf":7,"abcdefg":8,"abcdfg":9}
 
     def decode(self):
+        # Decoding segments and building dictionary. Ugly AF but it works
         self.decodingInput.sort(key=len)
         self.decodedPanels[list(filter(lambda x: x not in self.decodingInput[0],self.decodingInput[1]))[0]] = "a"
         self.decodedPanels[Counter(self.decodingInput[3] + self.decodingInput[4] + self.decodingInput[5] + self.decodingInput[2]).most_common()[0][0]] = "d"
@@ -24,9 +25,12 @@ class sevenSeg():
                 five = num
         self.decodedPanels[Counter(two + self.decodingInput[0]).most_common()[0][0]] = "c"
         self.decodedPanels[Counter(five + self.decodingInput[0]).most_common()[0][0]] = "f"
+        
+        # Decoding the input
         for i, num in enumerate(self.input):
             self.input[i] = [self.decodedPanels[c] for c in num]
         self.input = [self.sevenSegNums[x] for x in [''.join(sorted(x)) for x in self.input]]
+
 def generateSevenSeg(input) -> list:
     segs = []
     for seg in input:
