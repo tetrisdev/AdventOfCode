@@ -7,6 +7,7 @@ def solutionB(input):
 def parseInput(filepath: str):
     with open(filepath) as file:
         lines = file.readlines()
+        lines = [line.strip('\n') for line in lines]
     return lines
 
 def main():
