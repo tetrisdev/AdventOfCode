@@ -1,3 +1,5 @@
+def solutionA(input):
+    
 
 def parseInput(filepath: str):
     with open(filepath) as file:
@@ -7,7 +9,7 @@ def parseInput(filepath: str):
 def main():
     input = parseInput('input01')
     solutionA(input)
-    solutionB(input)
+    #solutionB(input)
 
 if __name__ == '__main__':
     main()
