@@ -1,16 +1,8 @@
 import re
 
 def digitreplace(matchobj):
-    if matchobj.group(1) == 'one': return '1'
-    elif matchobj.group(1) == 'two': return '2'
-    elif matchobj.group(1) == 'three': return '3'
-    elif matchobj.group(1) == 'four': return '4'
-    elif matchobj.group(1) == 'five': return '5'
-    elif matchobj.group(1) == 'six': return '6'
-    elif matchobj.group(1) == 'seven': return '7'
-    elif matchobj.group(1) == 'eight': return '8'
-    elif matchobj.group(1) == 'nine': return '9'
-
+    numdict = {'one':'1','two':'2','three':'3','four':'4','five':'5','six':'6','seven':'7','eight':'8','nine':'9','zero':'0'}
+    return numdict[matchobj.group(1)]
 
 def solutionB(input):
     textasDigits = [re.sub('(?=(one|two|three|four|five|six|seven|eight|nine))',digitreplace,line) for line in input]
