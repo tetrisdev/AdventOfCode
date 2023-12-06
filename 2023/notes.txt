@@ -1,0 +1,29 @@
+Incorrect list:
+((52, 59), -2, 'LeftNew'),
+((59, 98), 2, 'LeftOld'),
+((0, 14), 39, 'RightOld'),
+((14, 15), 35, 'RightNew'),
+((98, 100), -74, 'Complete Overlap'),
+((15, 26), -15, 'RightOld'),
+((26, 50), -26, 'RightNew'),
+((50, 52), -24, 'Complete Overlap'),
+((0, 14), 28, 'LeftNew'),
+((14, 15), 39, 'LeftOld'),
+((15, 52), -11),
+((15, 22), 27, 'Mid'),
+((22, 50), -15, 'MidRight'),
+((15, 22), -15, 'MidLeft'),
+((22, 26), 35, 'Mid'),
+((26, 50), -15, 'MidRight')
+
+
+Correct List:
+((0, 14), 28, 'LeftNew'),
+((14, 15), 35, 'RightNew'),
+((15, 22), 27, 'Mid'),
+((22, 26), 35, 'Mid'),
+((26, 50), -26, 'RightNew'),
+((50, 52), -24, 'Complete Overlap'),
+((52, 59), -2, 'LeftNew'),
+((59, 98), 2, 'LeftOld'),
+((98, 100), -74, 'Complete Overlap'),
