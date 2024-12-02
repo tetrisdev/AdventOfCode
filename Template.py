@@ -1,12 +1,14 @@
+from icecream import ic
+from aocd import get_data
 
-def parseInput(filepath: str):
-    with open(filepath) as file:
-        lines = file.readlines()
-        lines = [line.strip('\n') for line in lines]
-    return lines
-
+def solutionA(input):
+    ic(input)
+    
+def solutionB(input):
+    ic(input)
+    
 def main():
-    input = parseInput('input01')
+    input = get_data().split('\n')
     solutionA(input)
     solutionB(input)
 
