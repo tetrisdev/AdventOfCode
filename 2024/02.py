@@ -3,11 +3,7 @@ from icecream import ic
 from aocd import get_data
 
 def solutionA(levels):
-    allPos = [all(i > 0 for i in array) for array in levels]
-    allNeg = [all(i < 0 for i in array) for array in levels]
-    otherCriteria = [all(i != 0 and abs(i) <=3 for i in array) for array in levels]
-    #ic(levels,allPos,allNeg,otherCriteria)
-    safe = [(neg == True and other == True) ^ (pos == True and other == True) for pos,neg,other in zip(allPos, allNeg, otherCriteria)]
+    safe = [all(i < 0 and abs(i) <= 3 for i in array) or all(i > 0 and abs(i) <= 3 for i in array) for array in levels]
     #ic(safe,levels)
     return safe  
     
