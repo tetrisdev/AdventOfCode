@@ -1,6 +1,4 @@
-from gettext import find
 import itertools
-import statistics
 from icecream import ic
 from aocd import get_data
 
