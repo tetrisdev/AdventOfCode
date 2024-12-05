@@ -23,7 +23,7 @@ def solutionB(input):
     ic(sum)
     
 def main():
-    input = get_data()#.split('\n')
+    input = get_data(day=3, year=2024)#.split('\n')
     solutionA(input)
     solutionB(input)
 
